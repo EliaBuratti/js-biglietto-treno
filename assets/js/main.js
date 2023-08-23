@@ -14,20 +14,27 @@ L'output del prezzo finale va stampato in forma umana (ovvero con massimo due de
 Questo richiederà un minimo di ricerca nella documentazione di JS. 
 */
 
+
+
 //prompt km + prompt età con number
 
 const userKm = Number(prompt('Quanti km vuoi fare?'));
 
 const userAge = Number(prompt('Quanti anni hai?'));
 
-//valido i dati inseriti affinchè siano numeri e nel caso da un avviso poi ricarico la pagina.
 
-/*
-***PROVA****
-if (userKm != Number() && userAge != Number()) {
-    alert('Non fare il furbo!');
-    window.location.reload()
-} */
+//valido i dati inseriti affinchè siano numeri e nel caso faccio apparire un avviso poi ricarico la pagina.
+
+if ((isNaN(userKm)) || (userKm == "") || (userKm == "undefined")) {
+
+    alert('Inserisci solo numeri!');
+    window.location.reload();
+
+} else if ((isNaN(userAge)) || (userAge == "") || (userAge == "undefined")) {
+
+    alert('inserisci solo i numeri anche qua!');
+    window.location.reload();
+}
 
 //costante costo al km
 const priceKm = 0.21;
@@ -52,12 +59,10 @@ if (userAge <= 18) { //sconto minorenni
 const priceDIscount = ((userKm * priceKm ) * discount) / 100;
 
 //costo del biglietto con l'eventuale sconto
-const subPrice = (userKm * priceKm ) - priceDIscount;
+const finalPrice = ((userKm * priceKm ) - priceDIscount).toFixed(2);
 
 
 //stampare risultato al massimo di due decimali
-
-const finalPrice = subPrice.toFixed(2);
 
 console.log(finalPrice + '€');
 
