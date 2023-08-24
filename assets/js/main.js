@@ -39,13 +39,13 @@ if ((isNaN(userKm)) || (userKm == "") || (userKm == "undefined")) {
 //costante costo al km
 const priceKm = 0.21;
 
-//costante di sconto
+// variabile di sconto
 let discount;
 
 
 // if/else per definire gli sconti 
 
-if (userAge <= 18) { //sconto minorenni
+if (userAge < 18) { //sconto minorenni
     discount = 20;
 
 } else if (userAge > 65) { //sconto over 65
@@ -55,11 +55,15 @@ if (userAge <= 18) { //sconto minorenni
     discount = 0;
 }
 
+//prezzo non socntato
+const totalprice = userKm * priceKm; 
+
+
 //calcolo il prezzo da scontare
-const priceDIscount = ((userKm * priceKm ) * discount) / 100;
+const priceDIscount = ( totalprice * discount) / 100;
 
 //costo del biglietto con l'eventuale sconto
-const finalPrice = ((userKm * priceKm ) - priceDIscount).toFixed(2);
+const finalPrice = (totalprice - priceDIscount).toFixed(2);
 
 
 //stampare risultato al massimo di due decimali
